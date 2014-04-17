@@ -17,3 +17,15 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 * Appropriately labels the data set with descriptive activity names. 
 * Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 Good luck!
+
+## run_analysis.R
+
+### Generate Dataset
+Checkout the repo, and run the script run_analysis.R. 
+
+`source("run_analysis.R")`
+
+This will download the required package (plyr) and the required data from (https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) and store it in a zip file called data.zip, After this a new folder will be generated (results/) containing the two datasets.
+
+* dataset1.csv - 10299 rows and 81 cols
+* dataset2.csv - 180 rows and 81 cols

@@ -1,4 +1,6 @@
 
+run_analysis <- function (){
+
 file <- "data.zip"
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 data_path <- "UCI HAR Dataset"
@@ -64,7 +66,7 @@ getData <- function(type, features){
 
 ##saves the data into the result folder
 saveResult <- function (data,name){
-    file <- paste(result_folder, "/", name,".txt" ,sep="")
+    file <- paste(result_folder, "/", name,".csv" ,sep="")
     write.csv(dataset1,file)
 }
 
@@ -106,3 +108,7 @@ dataset2 <- ddply(dataset1, .(id, activity), .fun=function(x){ colMeans(x[,-c(1:
 colnames(dataset2[,-c(1:2)]) <- paste(colnames(dataset2[,-c(1:2)]), "_mean", sep="")
 
 saveResult(dataset2,"dataset2")
+
+}
+
+run_analysis()
