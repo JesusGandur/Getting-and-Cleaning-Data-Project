@@ -85,6 +85,9 @@ test <- getData("test",features)
 # merge datasets
 data <- rbind(train, test)
 
+# rearrange the data using id
+data <- arrange(data, id)
+
 
 
 ## 3. Uses descriptive activity names to name the activities in the data set < DONE
@@ -100,13 +103,16 @@ data$activity <- factor(data$activity, levels=activity_labels$V1, labels=activit
 dataset1 <- data[,c(1,2,grep("std", colnames(data)), grep("mean", colnames(data)))]
 
 
-# save dataset1 into result folder
+# save dataset1 into results folder
 saveResult(dataset1,"dataset1")
 
 ## 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 dataset2 <- ddply(dataset1, .(id, activity), .fun=function(x){ colMeans(x[,-c(1:2)]) })
-colnames(dataset2[,-c(1:2)]) <- paste(colnames(dataset2[,-c(1:2)]), "_mean", sep="")
 
+# Adds "_mean" to colnames
+colnames(dataset2)[-c(1:2)] <- paste(colnames(dataset2)[-c(1:2)], "_mean", sep="")
+
+# Save tidy dataset2 into results folder
 saveResult(dataset2,"dataset2")
 
 
